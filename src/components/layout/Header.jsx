@@ -50,11 +50,21 @@ const Header = () => {
         <div className="flex items-center justify-between h-16 md:h-20">
           <motion.a
             href="#"
-            className="text-xl md:text-2xl font-bold text-primary-600 dark:text-primary-400"
+            className="flex items-center gap-2"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            {SITE_CONFIG.name.split(' ').map((part, i) => i === 0 ? part[0] : '').join('')}
+            <div className="relative">
+              <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg bg-gradient-to-br from-primary-600 to-accent-600 dark:from-primary-500 dark:to-accent-500 flex items-center justify-center shadow-lg">
+                <span className="text-white font-bold text-sm md:text-base">
+                  {SITE_CONFIG.name.split(' ').map(n => n[0]).join('')}
+                </span>
+              </div>
+              <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-accent-500 rounded-full animate-pulse"></div>
+            </div>
+            <span className="hidden sm:block text-lg md:text-xl font-bold text-gray-900 dark:text-white">
+              {SITE_CONFIG.name}
+            </span>
           </motion.a>
 
           <div className="hidden md:flex items-center gap-6">

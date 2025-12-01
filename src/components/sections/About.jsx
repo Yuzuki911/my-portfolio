@@ -31,11 +31,11 @@ const About = () => {
           >
             <div className="relative">
               <div className="w-64 h-64 md:w-80 md:h-80 rounded-2xl overflow-hidden shadow-2xl">
-                <div className="w-full h-full bg-gradient-to-br from-primary-400 to-accent-500 flex items-center justify-center">
-                  <span className="text-8xl text-white font-bold">
-                    {SITE_CONFIG.name.split(' ').map(n => n[0]).join('')}
-                  </span>
-                </div>
+                <img
+                  src="./profile.png"
+                  alt={SITE_CONFIG.name}
+                  className="w-full h-full object-cover"
+                />
               </div>
               <motion.div
                 className="absolute -bottom-4 -right-4 w-32 h-32 bg-primary-600 dark:bg-primary-700 rounded-2xl -z-10"
