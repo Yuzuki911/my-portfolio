@@ -76,7 +76,11 @@ const PageTransition = ({ children }) => {
                   ease: "easeInOut"
                 }}
               >
-                <span className="text-3xl font-bold text-white">KN</span>
+                <img
+                  src="./logo.png"
+                  alt="Logo"
+                  className="w-16 h-16 object-contain"
+                />
               </motion.div>
             </motion.div>
 

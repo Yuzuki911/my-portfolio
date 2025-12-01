@@ -4,6 +4,7 @@ import { useState } from 'react'
 
 const ProjectCard = ({ project }) => {
   const [isHovered, setIsHovered] = useState(false)
+  const [imageLoaded, setImageLoaded] = useState(true)
 
   const x = useMotionValue(0)
   const y = useMotionValue(0)
@@ -46,14 +47,14 @@ const ProjectCard = ({ project }) => {
       className="bg-white dark:bg-dark-card rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 border border-gray-200 dark:border-gray-700"
     >
       <div className="relative h-48 bg-gradient-to-br from-primary-400 to-accent-500 overflow-hidden group">
-        <motion.div
-          className="absolute inset-0"
-          animate={{
-            background: isHovered
-              ? "linear-gradient(135deg, #f2545b 0%, #a93f55 100%)"
-              : "linear-gradient(135deg, #f5777d 0%, #c3436b 100%)"
-          }}
-        />
+        {project.image && imageLoaded && (
+          <img
+            src={project.image}
+            alt={project.title}
+            className="absolute inset-0 w-full h-full object-cover"
+            onError={() => setImageLoaded(false)}
+          />
+        )}
 
         <motion.div
           className="absolute inset-0 bg-black/40 flex items-center justify-center"

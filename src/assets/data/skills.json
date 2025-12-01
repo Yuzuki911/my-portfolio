@@ -2,32 +2,33 @@
   "Frontend": [
     { "name": "React", "icon": "SiReact" },
     { "name": "TypeScript", "icon": "SiTypescript" },
-    { "name": "Next.js", "icon": "SiNextdotjs" },
-    { "name": "Tailwind CSS", "icon": "SiTailwindcss" },
-    { "name": "Vue.js", "icon": "SiVuedotjs" },
-    { "name": "Redux", "icon": "SiRedux" }
+    { "name": "HTML", "icon": "SiHtml5" },
+    { "name": "CSS", "icon": "SiCss3" },
+    { "name": "jQuery", "icon": "SiJquery" },
+    { "name": "Tailwind CSS", "icon": "SiTailwindcss" }
   ],
   "Backend": [
+    { "name": ".NET", "icon": "SiDotnet" },
+    { "name": "EF Core", "icon": "FaCode" },
     { "name": "Python", "icon": "SiPython" },
     { "name": "FastAPI", "icon": "SiFastapi" },
-    { "name": "FastAPI", "icon": "SiFastapi" },
-    { "name": "FastAPI", "icon": "SiFastapi" },
+    { "name": "MSSQL", "icon": "FaDatabase" },
     { "name": "PostgreSQL", "icon": "SiPostgresql" }
   ],
   "AI/ML": [
-    { "name": "TensorFlow", "icon": "SiTensorflow" },
-    { "name": "PyTorch", "icon": "SiPytorch" },
     { "name": "OpenAI", "icon": "SiOpenai" },
     { "name": "LangChain", "icon": "FaBrain" },
-    { "name": "Scikit-learn", "icon": "SiScikitlearn" },
-    { "name": "Hugging Face", "icon": "FaRobot" }
+    { "name": "RAG", "icon": "FaDatabase" },
+    { "name": "TensorFlow", "icon": "SiTensorflow" },
+    { "name": "PyTorch", "icon": "SiPytorch" },
+    { "name": "YOLO", "icon": "FaEye" }
   ],
   "Tools": [
     { "name": "Git", "icon": "SiGit" },
     { "name": "Docker", "icon": "SiDocker" },
     { "name": "AWS", "icon": "FaAws" },
-    { "name": "MongoDB", "icon": "SiMongodb" },
+    { "name": "Azure", "icon": "FaCloud" },
     { "name": "Redis", "icon": "SiRedis" },
-    { "name": "Figma", "icon": "SiFigma" }
+    { "name": "MongoDB", "icon": "SiMongodb" }
   ]
 }

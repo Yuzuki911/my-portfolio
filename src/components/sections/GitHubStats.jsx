@@ -62,13 +62,28 @@ const GitHubStats = () => {
         )}
 
         {error && (
-          <div className="text-center py-12">
-            <p className="text-red-500 dark:text-red-400 mb-4">
-              Failed to load GitHub stats
-            </p>
-            <p className="text-gray-600 dark:text-gray-400 text-sm">
-              {error}
-            </p>
+          <div className="max-w-6xl mx-auto">
+            <div className="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-xl p-6 mb-8 text-center">
+              <p className="text-yellow-800 dark:text-yellow-200 mb-2 font-medium">
+                {error}
+              </p>
+              <p className="text-sm text-yellow-700 dark:text-yellow-300">
+                Your contribution graph is displayed below
+              </p>
+            </div>
+
+            <div className="bg-white dark:bg-dark-card rounded-2xl p-8 shadow-lg border border-gray-200 dark:border-gray-700">
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 text-center">
+                GitHub Contribution Graph
+              </h3>
+              <div className="flex justify-center">
+                <img
+                  src={`https://ghchart.rshah.org/${SITE_CONFIG.githubUsername}`}
+                  alt="GitHub Contributions"
+                  className="w-full max-w-3xl rounded-lg"
+                />
+              </div>
+            </div>
           </div>
         )}
 

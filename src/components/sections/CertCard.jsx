@@ -4,6 +4,7 @@ import { FiAward, FiExternalLink } from 'react-icons/fi'
 
 const CertCard = ({ certification }) => {
   const [isHovered, setIsHovered] = useState(false)
+  const [imageLoaded, setImageLoaded] = useState(true)
 
   const x = useMotionValue(0)
   const y = useMotionValue(0)
@@ -45,49 +46,61 @@ const CertCard = ({ certification }) => {
       className="bg-white dark:bg-dark-card rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 border border-gray-200 dark:border-gray-700 cursor-pointer"
     >
       <div className="h-40 bg-gradient-to-br from-primary-600 to-accent-700 flex items-center justify-center relative overflow-hidden">
-        {/* Animated background pulse */}
-        <motion.div
-          className="absolute inset-0 bg-gradient-to-br from-accent-600 to-primary-700"
-          animate={{
-            scale: isHovered ? 1.1 : 1,
-            opacity: isHovered ? 1 : 0,
-          }}
-          transition={{ duration: 0.3 }}
-        />
-
-        {/* Floating particles */}
-        {[...Array(3)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-1 h-1 bg-white/30 rounded-full"
-            style={{
-              left: `${30 + i * 20}%`,
-              top: `${40 + i * 10}%`,
-            }}
-            animate={{
-              y: isHovered ? [0, -20, 0] : 0,
-              opacity: isHovered ? [0.3, 1, 0.3] : 0,
-            }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              delay: i * 0.2,
-            }}
+        {/* Image or fallback gradient */}
+        {certification.image && imageLoaded ? (
+          <img
+            src={certification.image}
+            alt={certification.name}
+            className="absolute inset-0 w-full h-full object-cover"
+            onError={() => setImageLoaded(false)}
           />
-        ))}
+        ) : (
+          <>
+            {/* Animated background pulse */}
+            <motion.div
+              className="absolute inset-0 bg-gradient-to-br from-accent-600 to-primary-700"
+              animate={{
+                scale: isHovered ? 1.1 : 1,
+                opacity: isHovered ? 1 : 0,
+              }}
+              transition={{ duration: 0.3 }}
+            />
 
-        <motion.div
-          style={{ transform: "translateZ(50px)" }}
-          animate={{
-            scale: isHovered ? 1.2 : 1,
-            rotate: isHovered ? [0, 5, -5, 0] : 0,
-          }}
-          transition={{ duration: 0.5 }}
-          className="relative z-10"
-        >
-          <FiAward className="text-white text-7xl opacity-20 absolute" />
-          <FiAward className="text-white text-6xl" />
-        </motion.div>
+            {/* Floating particles */}
+            {[...Array(3)].map((_, i) => (
+              <motion.div
+                key={i}
+                className="absolute w-1 h-1 bg-white/30 rounded-full"
+                style={{
+                  left: `${30 + i * 20}%`,
+                  top: `${40 + i * 10}%`,
+                }}
+                animate={{
+                  y: isHovered ? [0, -20, 0] : 0,
+                  opacity: isHovered ? [0.3, 1, 0.3] : 0,
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  delay: i * 0.2,
+                }}
+              />
+            ))}
+
+            <motion.div
+              style={{ transform: "translateZ(50px)" }}
+              animate={{
+                scale: isHovered ? 1.2 : 1,
+                rotate: isHovered ? [0, 5, -5, 0] : 0,
+              }}
+              transition={{ duration: 0.5 }}
+              className="relative z-10"
+            >
+              <FiAward className="text-white text-7xl opacity-20 absolute" />
+              <FiAward className="text-white text-6xl" />
+            </motion.div>
+          </>
+        )}
       </div>
 
       <div className="p-6" style={{ transform: "translateZ(25px)" }}>
