@@ -50,7 +50,7 @@ const Header = () => {
         <div className="flex items-center justify-between h-16 md:h-20">
           <motion.a
             href="#"
-            className="text-xl md:text-2xl font-bold text-blue-500 dark:text-blue-400"
+            className="text-xl md:text-2xl font-bold text-primary-600 dark:text-primary-400"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -63,9 +63,9 @@ const Header = () => {
                 key={link.name}
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href)}
-                className={`text-sm font-medium transition-colors hover:text-blue-500 dark:hover:text-blue-400 ${
+                className={`text-sm font-medium transition-colors hover:text-primary-600 dark:hover:text-primary-400 ${
                   activeSection === link.href
-                    ? 'text-blue-500 dark:text-blue-400'
+                    ? 'text-primary-600 dark:text-primary-400'
                     : 'text-gray-700 dark:text-gray-300'
                 }`}
               >
@@ -105,7 +105,7 @@ const Header = () => {
                   onClick={(e) => handleNavClick(e, link.href)}
                   className={`py-2 text-base font-medium transition-colors ${
                     activeSection === link.href
-                      ? 'text-blue-500 dark:text-blue-400'
+                      ? 'text-primary-600 dark:text-primary-400'
                       : 'text-gray-700 dark:text-gray-300'
                   }`}
                 >

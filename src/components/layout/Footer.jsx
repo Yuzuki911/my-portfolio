@@ -19,7 +19,7 @@ const Footer = () => {
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="text-center md:text-left">
-            <h3 className="text-2xl font-bold text-blue-500 dark:text-blue-400 mb-2">
+            <h3 className="text-2xl font-bold text-primary-600 dark:text-primary-400 mb-2">
               {SITE_CONFIG.name}
             </h3>
             <p className="text-gray-600 dark:text-gray-400 text-sm">
@@ -40,7 +40,7 @@ const Footer = () => {
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.1, y: -2 }}
                   whileTap={{ scale: 0.9 }}
-                  className="p-3 bg-white dark:bg-gray-800 rounded-full shadow-md hover:shadow-lg transition-shadow text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400"
+                  className="p-3 bg-white dark:bg-gray-800 rounded-full shadow-md hover:shadow-lg transition-shadow text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400"
                   aria-label={key}
                 >
                   <Icon size={20} />
@@ -53,7 +53,7 @@ const Footer = () => {
             whileHover={{ scale: 1.1, y: -2 }}
             whileTap={{ scale: 0.9 }}
             onClick={scrollToTop}
-            className="p-3 bg-blue-500 dark:bg-blue-600 text-white rounded-full shadow-lg hover:shadow-xl transition-shadow"
+            className="p-3 bg-primary-600 dark:bg-primary-700 text-white rounded-full shadow-lg hover:shadow-xl transition-shadow"
             aria-label="Scroll to top"
           >
             <FiArrowUp size={20} />

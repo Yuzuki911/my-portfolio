@@ -20,7 +20,7 @@ const ExperienceItem = ({ experience, index }) => {
         <div className="relative flex flex-col items-center">
           <motion.div
             whileHover={{ scale: 1.2 }}
-            className="w-12 h-12 bg-blue-500 dark:bg-blue-600 rounded-full flex items-center justify-center shadow-lg z-10"
+            className="w-12 h-12 bg-primary-600 dark:bg-primary-700 rounded-full flex items-center justify-center shadow-lg z-10"
           >
             <FiBriefcase className="text-white text-xl" />
           </motion.div>
@@ -45,12 +45,12 @@ const ExperienceItem = ({ experience, index }) => {
 }
 
 const ExperienceContent = ({ experience }) => (
-  <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-shadow">
+  <div className="bg-white dark:bg-dark-card p-6 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-shadow">
     <div className="mb-3">
       <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-1">
         {experience.role}
       </h3>
-      <p className="text-blue-500 dark:text-blue-400 font-semibold mb-2">
+      <p className="text-primary-600 dark:text-primary-400 font-semibold mb-2">
         {experience.company}
       </p>
       <div className="flex flex-wrap items-center gap-3 text-sm text-gray-600 dark:text-gray-400">

@@ -21,7 +21,7 @@ const Counter = ({ value, duration = 2 }) => {
 const StatCard = ({ icon: Icon, label, value, color }) => (
   <motion.div
     whileHover={{ y: -5, scale: 1.02 }}
-    className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-200 dark:border-gray-700"
+    className="bg-white dark:bg-dark-card rounded-xl p-6 shadow-lg border border-gray-200 dark:border-gray-700"
   >
     <div className="flex items-center justify-between mb-3">
       <Icon className={`text-3xl ${color}`} />
@@ -37,7 +37,7 @@ const GitHubStats = () => {
   const { stats, loading, error } = useGitHubStats(SITE_CONFIG.githubUsername)
 
   return (
-    <Section id="github" className="bg-gray-50 dark:bg-gray-800">
+    <Section id="github" className="bg-beige dark:bg-dark-card">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -49,7 +49,7 @@ const GitHubStats = () => {
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-white">
             GitHub Activity
           </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full mb-6" />
+          <div className="w-20 h-1 bg-gradient-to-r from-primary-600 to-accent-600 mx-auto rounded-full mb-6" />
           <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
             My open source contributions and statistics
           </p>
@@ -107,7 +107,7 @@ const GitHubStats = () => {
               />
             </div>
 
-            <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg border border-gray-200 dark:border-gray-700">
+            <div className="bg-white dark:bg-dark-card rounded-2xl p-8 shadow-lg border border-gray-200 dark:border-gray-700">
               <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 text-center">
                 GitHub Contribution Graph
               </h3>

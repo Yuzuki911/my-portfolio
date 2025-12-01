@@ -1,24 +1,85 @@
-import { motion } from 'framer-motion'
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
 import { FiGithub, FiExternalLink } from 'react-icons/fi'
+import { useState } from 'react'
 
 const ProjectCard = ({ project }) => {
+  const [isHovered, setIsHovered] = useState(false)
+
+  const x = useMotionValue(0)
+  const y = useMotionValue(0)
+
+  const mouseXSpring = useSpring(x)
+  const mouseYSpring = useSpring(y)
+
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["7.5deg", "-7.5deg"])
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-7.5deg", "7.5deg"])
+
+  const handleMouseMove = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect()
+    const width = rect.width
+    const height = rect.height
+    const mouseX = e.clientX - rect.left
+    const mouseY = e.clientY - rect.top
+    const xPct = mouseX / width - 0.5
+    const yPct = mouseY / height - 0.5
+    x.set(xPct)
+    y.set(yPct)
+  }
+
+  const handleMouseLeave = () => {
+    x.set(0)
+    y.set(0)
+    setIsHovered(false)
+  }
+
   return (
     <motion.div
-      whileHover={{ y: -8 }}
-      className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-200 dark:border-gray-700"
+      onMouseMove={handleMouseMove}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={handleMouseLeave}
+      style={{
+        rotateX,
+        rotateY,
+        transformStyle: "preserve-3d",
+      }}
+      whileHover={{ z: 50 }}
+      className="bg-white dark:bg-dark-card rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 border border-gray-200 dark:border-gray-700"
     >
-      <div className="relative h-48 bg-gradient-to-br from-blue-400 to-purple-500 overflow-hidden group">
-        <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <div className="flex gap-4">
+      <div className="relative h-48 bg-gradient-to-br from-primary-400 to-accent-500 overflow-hidden group">
+        <motion.div
+          className="absolute inset-0"
+          animate={{
+            background: isHovered
+              ? "linear-gradient(135deg, #f2545b 0%, #a93f55 100%)"
+              : "linear-gradient(135deg, #f5777d 0%, #c3436b 100%)"
+          }}
+        />
+
+        <motion.div
+          className="absolute inset-0 bg-black/40 flex items-center justify-center"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: isHovered ? 1 : 0 }}
+          transition={{ duration: 0.3 }}
+        >
+          <motion.div
+            className="flex gap-4"
+            initial={{ scale: 0, rotate: -180 }}
+            animate={{
+              scale: isHovered ? 1 : 0,
+              rotate: isHovered ? 0 : -180
+            }}
+            transition={{ type: "spring", stiffness: 260, damping: 20 }}
+          >
             {project.demoLink && (
               <motion.a
                 href={project.demoLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ scale: 1.1 }}
+                whileHover={{ scale: 1.2, rotate: 5 }}
                 whileTap={{ scale: 0.9 }}
-                className="p-3 bg-white dark:bg-gray-800 rounded-full text-gray-900 dark:text-white hover:bg-blue-500 hover:text-white transition-colors"
+                className="p-3 bg-white dark:bg-dark-card rounded-full text-gray-900 dark:text-white hover:bg-primary-600 hover:text-white transition-colors cursor-pointer"
                 aria-label="View demo"
+                style={{ transformStyle: "preserve-3d", transform: "translateZ(50px)" }}
               >
                 <FiExternalLink size={20} />
               </motion.a>
@@ -28,40 +89,67 @@ const ProjectCard = ({ project }) => {
                 href={project.codeLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ scale: 1.1 }}
+                whileHover={{ scale: 1.2, rotate: -5 }}
                 whileTap={{ scale: 0.9 }}
-                className="p-3 bg-white dark:bg-gray-800 rounded-full text-gray-900 dark:text-white hover:bg-purple-500 hover:text-white transition-colors"
+                className="p-3 bg-white dark:bg-dark-card rounded-full text-gray-900 dark:text-white hover:bg-accent-600 hover:text-white transition-colors cursor-pointer"
                 aria-label="View code"
+                style={{ transformStyle: "preserve-3d", transform: "translateZ(50px)" }}
               >
                 <FiGithub size={20} />
               </motion.a>
             )}
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
 
-      <div className="p-6">
+      <div className="p-6" style={{ transform: "translateZ(25px)" }}>
         <div className="flex items-start justify-between mb-3">
-          <h3 className="text-xl font-bold text-gray-900 dark:text-white">
+          <motion.h3
+            className="text-xl font-bold text-gray-900 dark:text-white"
+            animate={{ color: isHovered ? "#f2545b" : undefined }}
+            transition={{ duration: 0.3 }}
+          >
             {project.title}
-          </h3>
-          <span className="px-3 py-1 text-xs font-medium bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full">
+          </motion.h3>
+          <motion.span
+            className="px-3 py-1 text-xs font-medium bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-400 rounded-full cursor-pointer"
+            whileHover={{ scale: 1.1, rotate: 5 }}
+            whileTap={{ scale: 0.95 }}
+          >
             {project.category}
-          </span>
+          </motion.span>
         </div>
 
-        <p className="text-gray-600 dark:text-gray-400 mb-4 line-clamp-3">
+        <motion.p
+          className="text-gray-600 dark:text-gray-400 mb-4 line-clamp-3"
+          animate={{ y: isHovered ? -2 : 0 }}
+          transition={{ duration: 0.3 }}
+        >
           {project.description}
-        </p>
+        </motion.p>
 
         <div className="flex flex-wrap gap-2">
           {project.technologies.map((tech, index) => (
-            <span
+            <motion.span
               key={index}
-              className="px-3 py-1 text-xs bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full"
+              className="px-3 py-1 text-xs bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full cursor-pointer"
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{
+                delay: index * 0.05,
+                type: "spring",
+                stiffness: 200,
+                damping: 10
+              }}
+              whileHover={{
+                scale: 1.15,
+                backgroundColor: "#f2545b",
+                color: "#fff",
+                transition: { duration: 0.2 }
+              }}
             >
               {tech}
-            </span>
+            </motion.span>
           ))}
         </div>
       </div>

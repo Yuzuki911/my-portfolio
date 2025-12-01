@@ -8,6 +8,10 @@
   }
 
   * {
-    @apply transition-colors duration-300;
+    @apply transition-colors duration-300 cursor-none;
+  }
+
+  input, textarea, select {
+    @apply cursor-text;
   }
 }

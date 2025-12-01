@@ -8,11 +8,10 @@
     { "name": "Redux", "icon": "SiRedux" }
   ],
   "Backend": [
-    { "name": "Node.js", "icon": "SiNodedotjs" },
     { "name": "Python", "icon": "SiPython" },
-    { "name": "Express", "icon": "SiExpress" },
     { "name": "FastAPI", "icon": "SiFastapi" },
-    { "name": "Django", "icon": "SiDjango" },
+    { "name": "FastAPI", "icon": "SiFastapi" },
+    { "name": "FastAPI", "icon": "SiFastapi" },
     { "name": "PostgreSQL", "icon": "SiPostgresql" }
   ],
   "AI/ML": [

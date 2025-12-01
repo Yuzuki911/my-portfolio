@@ -15,7 +15,12 @@
       "Bash(npm run dev:*)",
       "Bash(npm run build:*)",
       "Bash(npm uninstall:*)",
-      "Bash(taskkill:*)"
+      "Bash(taskkill:*)",
+      "Bash(find:*)",
+      "Bash(curl:*)",
+      "Bash(for file in src/components/sections/{Skills,Experience,Certifications,GitHubStats,Contact}.jsx)",
+      "Bash(do sed -i 's/from-blue-500 to-purple-500/from-primary-600 to-accent-600/g' \"$file\")",
+      "Bash(done)"
     ],
     "deny": [],
     "ask": []
