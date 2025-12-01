@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "company": "Tech Innovations Inc",
+    "role": "Senior Software Engineer",
+    "period": "Jan 2022 - Present",
+    "location": "San Francisco, CA",
+    "description": "Leading the development of AI-powered features and scalable web applications",
+    "achievements": [
+      "Led a team of 5 developers in building a machine learning platform that processes 1M+ requests daily",
+      "Improved application performance by 40% through code optimization and caching strategies",
+      "Implemented CI/CD pipelines reducing deployment time from hours to minutes",
+      "Mentored 3 junior developers and conducted technical workshops"
+    ],
+    "technologies": ["React", "Python", "AWS", "TensorFlow", "Docker"]
+  },
+  {
+    "id": 2,
+    "company": "Digital Solutions Corp",
+    "role": "Full Stack Developer",
+    "period": "Jun 2020 - Dec 2021",
+    "location": "Remote",
+    "description": "Developed and maintained full-stack web applications for enterprise clients",
+    "achievements": [
+      "Built 10+ client websites and web applications using modern frameworks",
+      "Integrated third-party APIs and payment systems (Stripe, PayPal)",
+      "Reduced bug reports by 60% through comprehensive testing implementation",
+      "Collaborated with UX designers to create intuitive user interfaces"
+    ],
+    "technologies": ["Vue.js", "Node.js", "MongoDB", "Express", "Tailwind"]
+  },
+  {
+    "id": 3,
+    "company": "StartUp Labs",
+    "role": "Junior Developer",
+    "period": "Jan 2019 - May 2020",
+    "location": "New York, NY",
+    "description": "Contributed to various projects in a fast-paced startup environment",
+    "achievements": [
+      "Developed responsive web interfaces using React and modern CSS",
+      "Participated in code reviews and agile development processes",
+      "Created REST APIs and integrated with databases",
+      "Assisted in deploying applications to cloud platforms"
+    ],
+    "technologies": ["React", "JavaScript", "REST API", "Git", "Heroku"]
+  }
+]

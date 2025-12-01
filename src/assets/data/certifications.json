@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "name": "AWS Certified Solutions Architect - Associate",
+    "issuer": "Amazon Web Services",
+    "date": "2023",
+    "credentialId": "ABC-123-XYZ",
+    "credentialLink": "https://www.credly.com/badges/example",
+    "image": "/assets/certifications/aws-cert.png",
+    "description": "Validates expertise in designing distributed systems on AWS"
+  },
+  {
+    "id": 2,
+    "name": "TensorFlow Developer Certificate",
+    "issuer": "Google",
+    "date": "2023",
+    "credentialId": "TF-456-DEF",
+    "credentialLink": "https://www.credential.net/example",
+    "image": "/assets/certifications/tensorflow-cert.png",
+    "description": "Demonstrates proficiency in building ML models with TensorFlow"
+  },
+  {
+    "id": 3,
+    "name": "MongoDB Certified Developer",
+    "issuer": "MongoDB University",
+    "date": "2022",
+    "credentialId": "MDB-789-GHI",
+    "credentialLink": "https://university.mongodb.com/exam/certificate",
+    "image": "/assets/certifications/mongodb-cert.png",
+    "description": "Expertise in MongoDB database design and development"
+  },
+  {
+    "id": 4,
+    "name": "React Advanced Patterns",
+    "issuer": "Frontend Masters",
+    "date": "2022",
+    "credentialId": "FM-321-JKL",
+    "credentialLink": "https://frontendmasters.com/certificates/example",
+    "image": "/assets/certifications/react-cert.png",
+    "description": "Advanced React patterns, performance optimization, and best practices"
+  }
+]

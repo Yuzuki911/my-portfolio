@@ -1,0 +1,34 @@
+{
+  "Frontend": [
+    { "name": "React", "icon": "SiReact" },
+    { "name": "TypeScript", "icon": "SiTypescript" },
+    { "name": "Next.js", "icon": "SiNextdotjs" },
+    { "name": "Tailwind CSS", "icon": "SiTailwindcss" },
+    { "name": "Vue.js", "icon": "SiVuedotjs" },
+    { "name": "Redux", "icon": "SiRedux" }
+  ],
+  "Backend": [
+    { "name": "Node.js", "icon": "SiNodedotjs" },
+    { "name": "Python", "icon": "SiPython" },
+    { "name": "Express", "icon": "SiExpress" },
+    { "name": "FastAPI", "icon": "SiFastapi" },
+    { "name": "Django", "icon": "SiDjango" },
+    { "name": "PostgreSQL", "icon": "SiPostgresql" }
+  ],
+  "AI/ML": [
+    { "name": "TensorFlow", "icon": "SiTensorflow" },
+    { "name": "PyTorch", "icon": "SiPytorch" },
+    { "name": "OpenAI", "icon": "SiOpenai" },
+    { "name": "LangChain", "icon": "FaBrain" },
+    { "name": "Scikit-learn", "icon": "SiScikitlearn" },
+    { "name": "Hugging Face", "icon": "FaRobot" }
+  ],
+  "Tools": [
+    { "name": "Git", "icon": "SiGit" },
+    { "name": "Docker", "icon": "SiDocker" },
+    { "name": "AWS", "icon": "FaAws" },
+    { "name": "MongoDB", "icon": "SiMongodb" },
+    { "name": "Redis", "icon": "SiRedis" },
+    { "name": "Figma", "icon": "SiFigma" }
+  ]
+}
