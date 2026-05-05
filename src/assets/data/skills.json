@@ -16,11 +16,11 @@
     { "name": "PostgreSQL", "icon": "SiPostgresql" }
   ],
   "AI/ML": [
-    { "name": "OpenAI", "icon": "SiOpenai" },
+    { "name": "LangGraph", "icon": "FaProjectDiagram" },
     { "name": "LangChain", "icon": "FaBrain" },
-    { "name": "RAG", "icon": "FaDatabase" },
-    { "name": "TensorFlow", "icon": "SiTensorflow" },
-    { "name": "PyTorch", "icon": "SiPytorch" },
+    { "name": "OpenAI", "icon": "SiOpenai" },
+    { "name": "Hybrid RAG", "icon": "FaLayerGroup" },
+    { "name": "MCP", "icon": "FaExchangeAlt" },
     { "name": "YOLO", "icon": "FaEye" }
   ],
   "Tools": [

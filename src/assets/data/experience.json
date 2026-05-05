@@ -1,47 +1,42 @@
 [
   {
     "id": 1,
-    "company": "Tech Innovations Inc",
-    "role": "Senior Software Engineer",
-    "period": "Jan 2022 - Present",
-    "location": "San Francisco, CA",
-    "description": "Leading the development of AI-powered features and scalable web applications",
-    "achievements": [
-      "Led a team of 5 developers in building a machine learning platform that processes 1M+ requests daily",
-      "Improved application performance by 40% through code optimization and caching strategies",
-      "Implemented CI/CD pipelines reducing deployment time from hours to minutes",
-      "Mentored 3 junior developers and conducted technical workshops"
+    "company": "FPT Software",
+    "role": ".NET Developer / AI Engineer",
+    "period": "Jan 2022 – Present",
+    "description": "Designed and delivered production-grade software across enterprise backends, AI-powered applications, and intelligent automation systems. Progressed from building scalable .NET APIs and services to architecting multi-agent LLM platforms, RAG pipelines, and document intelligence solutions — consistently owning projects end-to-end from architecture through deployment.",
+    "projects": [
+      { "name": "Multi-Agent IT Operations Platform", "period": "Jan 2026 – Present", "role": "AI Engineer" },
+      { "name": "Support AI Chatbot", "period": "Oct 2025 – Dec 2025", "role": "AI Engineer" },
+      { "name": "Air Cargo Management Platform", "period": "Oct 2024 – Sep 2025", "role": ".NET Developer" },
+      { "name": "Smart Bidding Assistant", "period": "Jul 2024 – Sep 2024", "role": "AI Engineer" },
+      { "name": "AI Career Upskilling Agent", "period": "Mar 2024 – Jun 2024", "role": "AI Engineer" },
+      { "name": "HR Management System", "period": "Jul 2023 – Feb 2024", "role": ".NET Developer" },
+      { "name": "Document OCR Platform", "period": "Jan 2023 – Jun 2023", "role": "AI Engineer" },
+      { "name": "M365 Mailbox Automation Portal", "period": "Jan 2022 – Dec 2022", "role": ".NET Developer" }
     ],
-    "technologies": ["React", "Python", "AWS", "TensorFlow", "Docker"]
+    "achievements": [
+      "Progressed from .NET backend developer to AI engineer, delivering production LLM and multi-agent systems",
+      "Built enterprise AI platform on Azure AKS supporting 200+ concurrent requests with a 29-rule governance engine",
+      "Designed hybrid RAG pipelines combining semantic vector search and graph traversal for IT operations and logistics",
+      "Delivered 8 outsourced client projects across logistics, HR, AI, and enterprise software domains over 3+ years"
+    ],
+    "technologies": ["C#", "ASP.NET Core", "Python", "FastAPI", "LangGraph", "LangChain", "Azure OpenAI", "Anthropic Claude", "AWS Bedrock", "Qdrant", "Neo4j", "PostgreSQL", "SQL Server", "Docker", "Azure AKS", "Azure DevOps"]
   },
   {
     "id": 2,
-    "company": "Digital Solutions Corp",
-    "role": "Full Stack Developer",
-    "period": "Jun 2020 - Dec 2021",
-    "location": "Remote",
-    "description": "Developed and maintained full-stack web applications for enterprise clients",
-    "achievements": [
-      "Built 10+ client websites and web applications using modern frameworks",
-      "Integrated third-party APIs and payment systems (Stripe, PayPal)",
-      "Reduced bug reports by 60% through comprehensive testing implementation",
-      "Collaborated with UX designers to create intuitive user interfaces"
+    "company": "TSDV (Toshiba Software Development Vietnam)",
+    "role": ".NET Developer",
+    "period": "Aug 2021 – Dec 2021",
+    "description": "Contributed to internal enterprise web application development covering HR management, project tracking, daily reporting, and business data analytics.",
+    "projects": [
+      { "name": "Internal ERP System", "period": "Aug 2021 – Dec 2021", "role": ".NET Developer" }
     ],
-    "technologies": ["Vue.js", "Node.js", "MongoDB", "Express", "Tailwind"]
-  },
-  {
-    "id": 3,
-    "company": "StartUp Labs",
-    "role": "Junior Developer",
-    "period": "Jan 2019 - May 2020",
-    "location": "New York, NY",
-    "description": "Contributed to various projects in a fast-paced startup environment",
     "achievements": [
-      "Developed responsive web interfaces using React and modern CSS",
-      "Participated in code reviews and agile development processes",
-      "Created REST APIs and integrated with databases",
-      "Assisted in deploying applications to cloud platforms"
+      "Designed application architecture based on MVC framework",
+      "Wrote unit tests covering API and repository layers",
+      "Supported and enhanced existing software modules"
     ],
-    "technologies": ["React", "JavaScript", "REST API", "Git", "Heroku"]
+    "technologies": ["ASP.NET Core", "Entity Framework", "PostgreSQL", "ReactJS", "MongoDB"]
   }
 ]

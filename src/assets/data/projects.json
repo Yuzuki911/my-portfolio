@@ -1,62 +1,92 @@
 [
   {
     "id": 1,
-    "title": "AI-Powered Chat Application",
-    "description": "Real-time chat application with AI assistant integration using OpenAI GPT. Features include context-aware responses, conversation history, and WebSocket communication.",
-    "image": "./assets/images/project1.jpg",
-    "technologies": ["React", "Node.js", "OpenAI", "WebSocket", "MongoDB"],
-    "category": "AI",
-    "demoLink": "https://demo.example.com",
-    "codeLink": "https://github.com/username/ai-chat"
+    "title": "Multi-Agent IT Operations Platform",
+    "client": "Korean Customer",
+    "domain": "IT Operations",
+    "description": "Enterprise-grade AI platform automating critical IT workflows — change management, incident response, database operations, and report generation — via multi-agent orchestration. Uses hybrid RAG (Qdrant + Neo4j) and a 29-rule human-in-the-loop governance engine.",
+    "image": "https://images.unsplash.com/photo-1674027444485-cec3da58eef4?w=800&q=80",
+    "technologies": ["Python", "FastAPI", "TypeScript", "React", "LangGraph", "LangChain", "MCP", "Azure OpenAI", "Anthropic Claude", "AWS Bedrock", "Qdrant", "Neo4j", "PostgreSQL", "MongoDB", "Redis", "Azure AKS", "Docker", "Kubernetes", "Azure DevOps"],
+    "category": "AI"
   },
   {
     "id": 2,
-    "title": "E-Commerce Platform",
-    "description": "Full-featured e-commerce platform with product management, shopping cart, payment integration, and order tracking. Built with modern web technologies.",
-    "image": "./assets/images/project2.jpg",
-    "technologies": ["Next.js", "TypeScript", "Stripe", "PostgreSQL", "Tailwind"],
-    "category": "Web",
-    "demoLink": "https://demo.example.com",
-    "codeLink": "https://github.com/username/ecommerce"
+    "title": "Support AI Chatbot",
+    "client": "Korean Customer",
+    "domain": "IT Operations",
+    "description": "Slack-based Support AI streamlining customer support with NLP, vector search, and multi-agent orchestration. Automates ticket creation, reduces duplicates via AI auto-responder, and maintains a self-improving FAQ system.",
+    "image": "https://images.unsplash.com/photo-1677691820099-a6e8040aa077?w=800&q=80",
+    "technologies": ["FastAPI", "LangGraph", "LangChain", "AWS Bedrock", "Anthropic Claude", "PostgreSQL", "pgvector", "Redis", "AWS EC2", "EventBridge", "CloudWatch"],
+    "category": "AI"
   },
   {
     "id": 3,
-    "title": "Machine Learning Model Dashboard",
-    "description": "Interactive dashboard for visualizing ML model performance, training metrics, and predictions. Includes real-time data updates and model comparison tools.",
-    "image": "./assets/images/project3.jpg",
-    "technologies": ["Python", "FastAPI", "TensorFlow", "React", "D3.js"],
-    "category": "AI",
-    "demoLink": "https://demo.example.com",
-    "codeLink": "https://github.com/username/ml-dashboard"
+    "title": "Air Cargo Management Platform",
+    "client": "Belgium Customer",
+    "domain": "Logistics",
+    "description": "Comprehensive platform maximizing visibility and service quality within the air cargo industry. Streamlines truck scheduling, check-in, and gate operations with event-driven workflows via Azure Service Bus.",
+    "image": "https://images.unsplash.com/photo-1716718810773-d2a52b43602f?w=800&q=80",
+    "technologies": ["C#", "ASP.NET Core", "SQL Server", "Azure Service Bus"],
+    "category": "Backend"
   },
   {
     "id": 4,
-    "title": "Task Management System",
-    "description": "Collaborative task management tool with team features, real-time updates, and project tracking. Inspired by modern productivity tools.",
-    "image": "./assets/images/project4.jpg",
-    "technologies": ["React", "Firebase", "Material-UI", "Redux"],
-    "category": "Web",
-    "demoLink": "https://demo.example.com",
-    "codeLink": "https://github.com/username/task-manager"
+    "title": "Smart Bidding Assistant",
+    "client": "Internal",
+    "domain": "Sales",
+    "description": "Web-based bidding assistant that processes client requirement documents and bid files. Automates document summarization using LLMs and recommends the most suitable developers via semantic search and ranking.",
+    "image": "https://images.unsplash.com/photo-1647005039373-e8fff57b75f6?w=800&q=80",
+    "technologies": ["FastAPI", "Python", "LangGraph", "LangChain", "OpenSearch", "Vector Databases", "OpenAI GPT", "AWS EC2", "Docker"],
+    "category": "AI"
   },
   {
     "id": 5,
-    "title": "Computer Vision API",
-    "description": "RESTful API for image recognition and object detection using deep learning models. Supports batch processing and custom model training.",
-    "image": "./assets/images/project5.jpg",
-    "technologies": ["Python", "PyTorch", "Docker", "AWS", "Redis"],
-    "category": "AI",
-    "demoLink": "https://demo.example.com",
-    "codeLink": "https://github.com/username/cv-api"
+    "title": "AI Career Upskilling Agent",
+    "client": "Internal",
+    "domain": "Human Resources",
+    "description": "AI platform generating personalized step-by-step learning roadmaps from user skills and goals. Features feedback-driven roadmap regeneration, external learning material matching, and async background processing.",
+    "image": "https://images.unsplash.com/photo-1673515334386-2b24073bb22f?w=800&q=80",
+    "technologies": ["Python", "FastAPI", "LangGraph", "LangChain", "OpenAI GPT-4o-mini", "PostgreSQL", "Celery", "Redis", "Docker"],
+    "category": "AI"
   },
   {
     "id": 6,
-    "title": "Portfolio CMS",
-    "description": "Headless CMS built for managing portfolio content with a beautiful admin interface. Features markdown support and media management.",
-    "image": "./assets/images/project6.jpg",
-    "technologies": ["Node.js", "Express", "MongoDB", "React", "AWS S3"],
-    "category": "Web",
-    "demoLink": "https://demo.example.com",
-    "codeLink": "https://github.com/username/portfolio-cms"
+    "title": "HR Management System",
+    "client": "South Africa Customer",
+    "domain": "Human Resources",
+    "description": "Comprehensive HRMS covering recruitment, employee self-service, payroll processing, e-learning, and finance modules. Integrated third-party APIs for payroll and benefits with strong security and compliance.",
+    "image": "https://images.unsplash.com/photo-1686771416282-3888ddaf249b?w=800&q=80",
+    "technologies": ["C#", ".NET Framework", "ASP.NET Core", "Entity Framework", "SQL Server"],
+    "category": "Backend"
+  },
+  {
+    "id": 7,
+    "title": "Document OCR Platform",
+    "client": "Korean Customer",
+    "domain": "IT Operations",
+    "description": "Web application enabling users to upload and scan document images, converting them to structured text using OCR. Leverages YOLO-based region detection to segment headers, tables, and text blocks before recognition.",
+    "image": "https://images.unsplash.com/photo-1775163035702-06e47ba88857?w=800&q=80",
+    "technologies": ["EasyOCR", "PaddleOCR", "YOLO", "Python", "FastAPI", "Angular", "AWS EC2"],
+    "category": "AI"
+  },
+  {
+    "id": 8,
+    "title": "M365 Mailbox Automation Portal",
+    "client": "Singapore Customer",
+    "domain": "IT Services",
+    "description": "Service portal automating M365 mailbox lifecycle management including creation, deletion, licensing, billing reports, and message usage tracking. Exposed as API endpoints for external system integration.",
+    "image": "https://images.unsplash.com/photo-1557200134-90327ee9fafa?w=800&q=80",
+    "technologies": [".NET Framework", "ASP.NET Core", "SQL Server"],
+    "category": "Backend"
+  },
+  {
+    "id": 9,
+    "title": "Internal ERP System",
+    "client": "Japan Customer",
+    "domain": "Human Resources",
+    "description": "Internal web application for company-wide use covering human resource management, project tracking, daily reporting, and business data analytics. Built on MVC architecture with unit and integration testing.",
+    "image": "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&q=80",
+    "technologies": ["ASP.NET Core", "Entity Framework", "PostgreSQL", "ReactJS", "MongoDB"],
+    "category": "Backend"
   }
 ]

@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
-import { FiBriefcase, FiMapPin, FiCheckCircle } from 'react-icons/fi'
+import { FiBriefcase, FiMapPin, FiCheckCircle, FiFolder } from 'react-icons/fi'
 
-const ExperienceItem = ({ experience, index }) => {
+const ExperienceItem = ({ experience, index, isLast }) => {
   const isEven = index % 2 === 0
 
   return (
@@ -24,7 +24,7 @@ const ExperienceItem = ({ experience, index }) => {
           >
             <FiBriefcase className="text-white text-xl" />
           </motion.div>
-          {index !== 2 && (
+          {!isLast && (
             <div className="w-0.5 h-full bg-gray-300 dark:bg-gray-700 absolute top-12" />
           )}
         </div>
@@ -55,16 +55,38 @@ const ExperienceContent = ({ experience }) => (
       </p>
       <div className="flex flex-wrap items-center gap-3 text-sm text-gray-600 dark:text-gray-400">
         <span>{experience.period}</span>
-        <span className="flex items-center gap-1">
-          <FiMapPin size={14} />
-          {experience.location}
-        </span>
+        {experience.location && (
+          <span className="flex items-center gap-1">
+            <FiMapPin size={14} />
+            {experience.location}
+          </span>
+        )}
       </div>
     </div>
 
     <p className="text-gray-700 dark:text-gray-300 mb-4">
       {experience.description}
     </p>
+
+    {experience.projects && experience.projects.length > 0 && (
+      <div className="mb-4">
+        <h4 className="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2 flex items-center gap-1.5">
+          <FiFolder size={12} />
+          Projects
+        </h4>
+        <div className="space-y-1.5">
+          {experience.projects.map((proj, idx) => (
+            <div key={idx} className="flex items-center justify-between gap-4">
+              <div className="flex items-center gap-2 min-w-0">
+                <span className="w-1.5 h-1.5 rounded-full bg-primary-500 flex-shrink-0" />
+                <span className="text-sm text-gray-700 dark:text-gray-300 truncate">{proj.name}</span>
+              </div>
+              <span className="text-xs text-gray-400 dark:text-gray-500 whitespace-nowrap flex-shrink-0">{proj.period}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    )}
 
     <div className="space-y-2 mb-4">
       {experience.achievements.map((achievement, idx) => (

@@ -1,5 +1,5 @@
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
-import { FiGithub, FiExternalLink } from 'react-icons/fi'
+import { FiUser, FiLayers } from 'react-icons/fi'
 import { useState } from 'react'
 
 const ProjectCard = ({ project }) => {
@@ -57,47 +57,33 @@ const ProjectCard = ({ project }) => {
         )}
 
         <motion.div
-          className="absolute inset-0 bg-black/40 flex items-center justify-center"
+          className="absolute inset-0 bg-black/60 flex flex-col items-center justify-center gap-3"
           initial={{ opacity: 0 }}
           animate={{ opacity: isHovered ? 1 : 0 }}
           transition={{ duration: 0.3 }}
         >
-          <motion.div
-            className="flex gap-4"
-            initial={{ scale: 0, rotate: -180 }}
-            animate={{
-              scale: isHovered ? 1 : 0,
-              rotate: isHovered ? 0 : -180
-            }}
-            transition={{ type: "spring", stiffness: 260, damping: 20 }}
-          >
-            {project.demoLink && (
-              <motion.a
-                href={project.demoLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.2, rotate: 5 }}
-                whileTap={{ scale: 0.9 }}
-                className="p-3 bg-white dark:bg-dark-card rounded-full text-gray-900 dark:text-white hover:bg-primary-600 hover:text-white transition-colors cursor-pointer"
-                aria-label="View demo"
-              >
-                <FiExternalLink size={20} />
-              </motion.a>
-            )}
-            {project.codeLink && (
-              <motion.a
-                href={project.codeLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.2, rotate: -5 }}
-                whileTap={{ scale: 0.9 }}
-                className="p-3 bg-white dark:bg-dark-card rounded-full text-gray-900 dark:text-white hover:bg-accent-600 hover:text-white transition-colors cursor-pointer"
-                aria-label="View code"
-              >
-                <FiGithub size={20} />
-              </motion.a>
-            )}
-          </motion.div>
+          {project.client && (
+            <motion.div
+              className="flex items-center gap-2 text-white text-sm font-medium"
+              initial={{ y: 10, opacity: 0 }}
+              animate={{ y: isHovered ? 0 : 10, opacity: isHovered ? 1 : 0 }}
+              transition={{ duration: 0.3, delay: 0.05 }}
+            >
+              <FiUser size={15} />
+              <span>{project.client}</span>
+            </motion.div>
+          )}
+          {project.domain && (
+            <motion.div
+              className="flex items-center gap-2 text-white text-sm font-medium"
+              initial={{ y: 10, opacity: 0 }}
+              animate={{ y: isHovered ? 0 : 10, opacity: isHovered ? 1 : 0 }}
+              transition={{ duration: 0.3, delay: 0.1 }}
+            >
+              <FiLayers size={15} />
+              <span>{project.domain}</span>
+            </motion.div>
+          )}
         </motion.div>
       </div>
 

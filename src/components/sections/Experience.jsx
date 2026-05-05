@@ -29,6 +29,7 @@ const Experience = () => {
               key={experience.id}
               experience={experience}
               index={index}
+              isLast={index === experienceData.length - 1}
             />
           ))}
         </div>
