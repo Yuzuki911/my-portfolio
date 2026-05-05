@@ -88,7 +88,6 @@ const CertCard = ({ certification }) => {
             ))}
 
             <motion.div
-              style={{ transform: "translateZ(50px)" }}
               animate={{
                 scale: isHovered ? 1.2 : 1,
                 rotate: isHovered ? [0, 5, -5, 0] : 0,
@@ -103,7 +102,7 @@ const CertCard = ({ certification }) => {
         )}
       </div>
 
-      <div className="p-6" style={{ transform: "translateZ(25px)" }}>
+      <div className="p-6">
         <motion.h3
           className="text-xl font-bold text-gray-900 dark:text-white mb-2"
           animate={{

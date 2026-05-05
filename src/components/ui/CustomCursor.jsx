@@ -8,6 +8,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 // 'particle' - Particle explosion effect
 
 const CustomCursor = ({ style = 'spotlight' }) => {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return null;
+
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
   const [isClicking, setIsClicking] = useState(false);

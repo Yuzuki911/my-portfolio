@@ -80,7 +80,6 @@ const ProjectCard = ({ project }) => {
                 whileTap={{ scale: 0.9 }}
                 className="p-3 bg-white dark:bg-dark-card rounded-full text-gray-900 dark:text-white hover:bg-primary-600 hover:text-white transition-colors cursor-pointer"
                 aria-label="View demo"
-                style={{ transformStyle: "preserve-3d", transform: "translateZ(50px)" }}
               >
                 <FiExternalLink size={20} />
               </motion.a>
@@ -94,7 +93,6 @@ const ProjectCard = ({ project }) => {
                 whileTap={{ scale: 0.9 }}
                 className="p-3 bg-white dark:bg-dark-card rounded-full text-gray-900 dark:text-white hover:bg-accent-600 hover:text-white transition-colors cursor-pointer"
                 aria-label="View code"
-                style={{ transformStyle: "preserve-3d", transform: "translateZ(50px)" }}
               >
                 <FiGithub size={20} />
               </motion.a>
@@ -103,7 +101,7 @@ const ProjectCard = ({ project }) => {
         </motion.div>
       </div>
 
-      <div className="p-6" style={{ transform: "translateZ(25px)" }}>
+      <div className="p-6">
         <div className="flex items-start justify-between mb-3">
           <motion.h3
             className="text-xl font-bold text-gray-900 dark:text-white"

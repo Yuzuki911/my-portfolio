@@ -3,23 +3,14 @@ import { FiDownload, FiMapPin } from 'react-icons/fi'
 import { SITE_CONFIG } from '../../utils/constants'
 import Section from '../ui/Section'
 import Button from '../ui/Button'
+import SectionHeader from '../ui/SectionHeader'
+import { staggerContainer, slideInLeft } from '../../utils/animations'
 
 const About = () => {
   return (
     <Section id="about" className="bg-cornsilk dark:bg-dark-bg">
       <div className="container mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-white">
-            About Me
-          </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-primary-600 to-accent-600 mx-auto rounded-full" />
-        </motion.div>
+        <SectionHeader title="About Me" />
 
         <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
           <motion.div
@@ -85,15 +76,7 @@ const About = () => {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
-                variants={{
-                  hidden: {},
-                  visible: {
-                    transition: {
-                      staggerChildren: 0.1,
-                      delayChildren: 0.7
-                    }
-                  }
-                }}
+                variants={staggerContainer}
               >
                 {[
                   { text: "Build scalable web applications with modern frameworks", color: "bg-primary-600" },
@@ -104,18 +87,7 @@ const About = () => {
                   <motion.li
                     key={index}
                     className="flex items-center gap-3 text-gray-700 dark:text-gray-300"
-                    variants={{
-                      hidden: { opacity: 0, x: -20 },
-                      visible: {
-                        opacity: 1,
-                        x: 0,
-                        transition: {
-                          type: "spring",
-                          stiffness: 100,
-                          damping: 12
-                        }
-                      }
-                    }}
+                    variants={slideInLeft}
                     whileHover={{
                       x: 10,
                       transition: { duration: 0.2 }

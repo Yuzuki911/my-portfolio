@@ -67,7 +67,6 @@ const SkillCard = ({ skill }) => {
 
       {IconComponent && (
         <motion.div
-          style={{ transform: "translateZ(50px)" }}
           animate={{
             rotateY: isHovered ? [0, 360] : 0,
             scale: isHovered ? 1.15 : 1,
@@ -83,7 +82,6 @@ const SkillCard = ({ skill }) => {
       )}
       <motion.h3
         className="text-lg font-semibold text-gray-900 dark:text-white text-center relative z-10"
-        style={{ transform: "translateZ(25px)" }}
         animate={{
           color: isHovered ? "#f2545b" : undefined,
           y: isHovered ? -3 : 0,

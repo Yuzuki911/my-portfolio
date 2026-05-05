@@ -80,3 +80,31 @@ export const hoverLift = {
   y: -5,
   transition: { type: 'spring', stiffness: 300 }
 }
+
+export const springItem = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { type: 'spring', stiffness: 100, damping: 12 }
+  }
+}
+
+export const slideInLeft = {
+  hidden: { opacity: 0, x: -20 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { type: 'spring', stiffness: 100, damping: 12 }
+  }
+}
+
+export const letterVariants = {
+  hidden: { opacity: 0, y: 50, rotateX: -90 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    rotateX: 0,
+    transition: { type: 'spring', stiffness: 100, damping: 10 }
+  }
+}

@@ -4,6 +4,7 @@ import { FiMail, FiSend, FiCheckCircle, FiAlertCircle } from 'react-icons/fi'
 import axios from 'axios'
 import Section from '../ui/Section'
 import Button from '../ui/Button'
+import SectionHeader from '../ui/SectionHeader'
 import { SITE_CONFIG } from '../../utils/constants'
 
 const Contact = () => {
@@ -20,14 +21,34 @@ const Contact = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
+  const FORMSPREE_ENDPOINT = import.meta.env.VITE_FORMSPREE_ENDPOINT
+
+  const validate = () => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!formData.name.trim()) return 'Name is required.'
+    if (!formData.email.trim()) return 'Email is required.'
+    if (!emailRegex.test(formData.email)) return 'Please enter a valid email address.'
+    if (!formData.message.trim()) return 'Message is required.'
+    return null
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     setLoading(true)
     setStatus({ type: '', message: '' })
 
-    // Replace with your Formspree endpoint
-    // Sign up at https://formspree.io to get your form ID
-    const FORMSPREE_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID'
+    if (!FORMSPREE_ENDPOINT || FORMSPREE_ENDPOINT.includes('YOUR_FORM_ID')) {
+      setStatus({ type: 'error', message: 'Contact form is not configured yet.' })
+      setLoading(false)
+      return
+    }
+
+    const validationError = validate()
+    if (validationError) {
+      setStatus({ type: 'error', message: validationError })
+      setLoading(false)
+      return
+    }
 
     try {
       await axios.post(FORMSPREE_ENDPOINT, formData)
@@ -51,21 +72,10 @@ const Contact = () => {
   return (
     <Section id="contact" className="bg-cornsilk dark:bg-dark-bg">
       <div className="container mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-white">
-            Get In Touch
-          </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-primary-600 to-accent-600 mx-auto rounded-full mb-6" />
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            Have a project in mind or want to collaborate? Feel free to reach out!
-          </p>
-        </motion.div>
+        <SectionHeader
+          title="Get In Touch"
+          subtitle="Have a project in mind or want to collaborate? Feel free to reach out!"
+        />
 
         <div className="max-w-4xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12">

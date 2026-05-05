@@ -1,8 +1,9 @@
 import { motion, useMotionValue, useTransform, animate } from 'framer-motion'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { FiGithub, FiStar, FiGitBranch, FiUsers } from 'react-icons/fi'
 import Section from '../ui/Section'
 import LoadingSpinner from '../ui/LoadingSpinner'
+import SectionHeader from '../ui/SectionHeader'
 import { useGitHubStats } from '../../hooks/useGitHubStats'
 import { SITE_CONFIG } from '../../utils/constants'
 
@@ -16,6 +17,39 @@ const Counter = ({ value, duration = 2 }) => {
   }, [value, count, duration])
 
   return <motion.span>{rounded}</motion.span>
+}
+
+const ContributionChart = ({ username }) => {
+  const [imgError, setImgError] = useState(false)
+  return (
+    <div className="bg-white dark:bg-dark-card rounded-2xl p-8 shadow-lg border border-gray-200 dark:border-gray-700">
+      <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 text-center">
+        GitHub Contribution Graph
+      </h3>
+      <div className="flex justify-center">
+        {imgError ? (
+          <p className="text-gray-500 dark:text-gray-400 text-sm">
+            Contribution graph unavailable. View on{' '}
+            <a
+              href={`https://github.com/${username}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary-600 hover:underline"
+            >
+              GitHub
+            </a>.
+          </p>
+        ) : (
+          <img
+            src={`https://ghchart.rshah.org/${username}`}
+            alt="GitHub Contributions"
+            className="w-full max-w-3xl rounded-lg"
+            onError={() => setImgError(true)}
+          />
+        )}
+      </div>
+    </div>
+  )
 }
 
 const StatCard = ({ icon: Icon, label, value, color }) => (
@@ -39,21 +73,10 @@ const GitHubStats = () => {
   return (
     <Section id="github" className="bg-beige dark:bg-dark-card">
       <div className="container mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-white">
-            GitHub Activity
-          </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-primary-600 to-accent-600 mx-auto rounded-full mb-6" />
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            My open source contributions and statistics
-          </p>
-        </motion.div>
+        <SectionHeader
+          title="GitHub Activity"
+          subtitle="My open source contributions and statistics"
+        />
 
         {loading && (
           <div className="flex justify-center py-12">
@@ -72,18 +95,7 @@ const GitHubStats = () => {
               </p>
             </div>
 
-            <div className="bg-white dark:bg-dark-card rounded-2xl p-8 shadow-lg border border-gray-200 dark:border-gray-700">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 text-center">
-                GitHub Contribution Graph
-              </h3>
-              <div className="flex justify-center">
-                <img
-                  src={`https://ghchart.rshah.org/${SITE_CONFIG.githubUsername}`}
-                  alt="GitHub Contributions"
-                  className="w-full max-w-3xl rounded-lg"
-                />
-              </div>
-            </div>
+            <ContributionChart username={SITE_CONFIG.githubUsername} />
           </div>
         )}
 
@@ -122,18 +134,7 @@ const GitHubStats = () => {
               />
             </div>
 
-            <div className="bg-white dark:bg-dark-card rounded-2xl p-8 shadow-lg border border-gray-200 dark:border-gray-700">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 text-center">
-                GitHub Contribution Graph
-              </h3>
-              <div className="flex justify-center">
-                <img
-                  src={`https://ghchart.rshah.org/${SITE_CONFIG.githubUsername}`}
-                  alt="GitHub Contributions"
-                  className="w-full max-w-3xl rounded-lg"
-                />
-              </div>
-            </div>
+            <ContributionChart username={SITE_CONFIG.githubUsername} />
           </motion.div>
         )}
       </div>

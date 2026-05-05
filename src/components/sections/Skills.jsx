@@ -2,45 +2,17 @@ import { motion } from 'framer-motion'
 import Section from '../ui/Section'
 import SkillCard from './SkillCard'
 import skillsData from '../../assets/data/skills.json'
+import SectionHeader from '../ui/SectionHeader'
+import { staggerContainer, staggerItem } from '../../utils/animations'
 
 const Skills = () => {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.08
-      }
-    }
-  }
-
-  const itemVariants = {
-    hidden: { opacity: 0, scale: 0.8 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: { duration: 0.4 }
-    }
-  }
-
   return (
     <Section id="skills" className="bg-cornsilk dark:bg-dark-bg">
       <div className="container mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-white">
-            Skills & Technologies
-          </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-primary-600 to-accent-600 mx-auto rounded-full mb-6" />
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            Technologies and tools I use to bring ideas to life
-          </p>
-        </motion.div>
+        <SectionHeader
+          title="Skills & Technologies"
+          subtitle="Technologies and tools I use to bring ideas to life"
+        />
 
         <div className="space-y-12 max-w-6xl mx-auto">
           {Object.entries(skillsData).map(([category, skills]) => (
@@ -49,14 +21,14 @@ const Skills = () => {
                 {category}
               </h3>
               <motion.div
-                variants={containerVariants}
+                variants={staggerContainer}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
                 className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4"
               >
                 {skills.map((skill, index) => (
-                  <motion.div key={index} variants={itemVariants}>
+                  <motion.div key={index} variants={staggerItem}>
                     <SkillCard skill={skill} />
                   </motion.div>
                 ))}

@@ -1,5 +1,9 @@
 import { useEffect, useState, useRef } from 'react'
 
+/**
+ * Use for simple conditional rendering or CSS class toggling based on scroll visibility.
+ * Returns [targetRef, isIntersecting] — no Framer Motion dependency.
+ */
 export const useIntersectionObserver = (options = {}) => {
   const [isIntersecting, setIsIntersecting] = useState(false)
   const targetRef = useRef(null)

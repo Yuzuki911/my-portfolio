@@ -1,6 +1,15 @@
 import { useEffect, useRef } from 'react';
 
+const PARTICLE_COUNT = 150;
+const CONNECTION_DISTANCE = 100;
+const REPEL_RADIUS = 150;
+const PARTICLE_SPEED = 1.2;
+const FRICTION = 0.98;
+const RANDOM_DRIFT = 0.15;
+
 const ParticleBackground = () => {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return null;
+
   const canvasRef = useRef(null);
   const particlesRef = useRef([]);
   const mouseRef = useRef({ x: 0, y: 0 });
@@ -14,13 +23,11 @@ const ParticleBackground = () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
-    // Initialize particles
-    const particleCount = 150;
-    particlesRef.current = Array.from({ length: particleCount }, () => ({
+    particlesRef.current = Array.from({ length: PARTICLE_COUNT }, () => ({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
-      vx: (Math.random() - 0.5) * 1.2,
-      vy: (Math.random() - 0.5) * 1.2,
+      vx: (Math.random() - 0.5) * PARTICLE_SPEED,
+      vy: (Math.random() - 0.5) * PARTICLE_SPEED,
       size: Math.random() * 2 + 1.5,
       baseSize: Math.random() * 2 + 1.5,
     }));
@@ -54,9 +61,8 @@ const ParticleBackground = () => {
         const distance = Math.sqrt(dx * dx + dy * dy);
 
         // Repel particles near cursor
-        const repelRadius = 150;
-        if (distance < repelRadius && distance > 0) {
-          const force = (repelRadius - distance) / repelRadius;
+        if (distance < REPEL_RADIUS && distance > 0) {
+          const force = (REPEL_RADIUS - distance) / REPEL_RADIUS;
           const angle = Math.atan2(-dy, -dx); // Negative for repel direction
           particle.vx += Math.cos(angle) * force * 0.8;
           particle.vy += Math.sin(angle) * force * 0.8;
@@ -69,13 +75,11 @@ const ParticleBackground = () => {
         particle.x += particle.vx;
         particle.y += particle.vy;
 
-        // Add friction (less friction = more floating)
-        particle.vx *= 0.98;
-        particle.vy *= 0.98;
+        particle.vx *= FRICTION;
+        particle.vy *= FRICTION;
 
-        // Random movement (increased for more floating)
-        particle.vx += (Math.random() - 0.5) * 0.15;
-        particle.vy += (Math.random() - 0.5) * 0.15;
+        particle.vx += (Math.random() - 0.5) * RANDOM_DRIFT;
+        particle.vy += (Math.random() - 0.5) * RANDOM_DRIFT;
 
         // Boundary check with bounce
         if (particle.x < 0 || particle.x > canvas.width) {
@@ -88,24 +92,45 @@ const ParticleBackground = () => {
         }
       });
 
-      // Draw connection lines between nearby particles
-      ctx.lineWidth = 1;
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
-          const dx = particles[i].x - particles[j].x;
-          const dy = particles[i].y - particles[j].y;
-          const distance = Math.sqrt(dx * dx + dy * dy);
+      // Build spatial grid for O(n) connection checks instead of O(n²)
+      const grid = new Map();
+      particles.forEach((p, i) => {
+        const col = Math.floor(p.x / CONNECTION_DISTANCE);
+        const row = Math.floor(p.y / CONNECTION_DISTANCE);
+        const key = `${col},${row}`;
+        if (!grid.has(key)) grid.set(key, []);
+        grid.get(key).push(i);
+      });
 
-          if (distance < 100) {
-            const opacity = (1 - distance / 100) * 0.3;
-            ctx.strokeStyle = `rgba(242, 84, 91, ${opacity})`;
-            ctx.beginPath();
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.stroke();
+      ctx.lineWidth = 1;
+      const drawn = new Set();
+      particles.forEach((p, i) => {
+        const col = Math.floor(p.x / CONNECTION_DISTANCE);
+        const row = Math.floor(p.y / CONNECTION_DISTANCE);
+        for (let dc = -1; dc <= 1; dc++) {
+          for (let dr = -1; dr <= 1; dr++) {
+            const cell = grid.get(`${col + dc},${row + dr}`);
+            if (!cell) continue;
+            cell.forEach((j) => {
+              if (j <= i) return;
+              const pairKey = `${i}-${j}`;
+              if (drawn.has(pairKey)) return;
+              drawn.add(pairKey);
+              const dx = p.x - particles[j].x;
+              const dy = p.y - particles[j].y;
+              const dist = Math.sqrt(dx * dx + dy * dy);
+              if (dist < CONNECTION_DISTANCE) {
+                const opacity = (1 - dist / CONNECTION_DISTANCE) * 0.3;
+                ctx.strokeStyle = `rgba(242, 84, 91, ${opacity})`;
+                ctx.beginPath();
+                ctx.moveTo(p.x, p.y);
+                ctx.lineTo(particles[j].x, particles[j].y);
+                ctx.stroke();
+              }
+            });
           }
         }
-      }
+      });
 
       // Draw particles with glow
       particles.forEach((particle) => {
@@ -114,8 +139,8 @@ const ParticleBackground = () => {
         const distance = Math.sqrt(dx * dx + dy * dy);
 
         // Glow effect near cursor
-        if (distance < 150) {
-          const glowIntensity = (1 - distance / 150) * 1;
+        if (distance < REPEL_RADIUS) {
+          const glowIntensity = (1 - distance / REPEL_RADIUS) * 1;
           const gradient = ctx.createRadialGradient(
             particle.x,
             particle.y,
@@ -144,8 +169,8 @@ const ParticleBackground = () => {
           particle.size
         );
 
-        if (distance < 150) {
-          const intensity = 1 - distance / 150;
+        if (distance < REPEL_RADIUS) {
+          const intensity = 1 - distance / REPEL_RADIUS;
           particleGradient.addColorStop(0, `rgba(242, 84, 91, ${0.95 + intensity * 0.05})`);
           particleGradient.addColorStop(1, `rgba(242, 84, 91, ${0.7 + intensity * 0.2})`);
         } else {

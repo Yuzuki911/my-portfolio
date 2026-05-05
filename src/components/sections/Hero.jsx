@@ -2,49 +2,12 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import { FiArrowDown } from 'react-icons/fi'
 import { SITE_CONFIG } from '../../utils/constants'
 import Button from '../ui/Button'
+import { staggerContainer, springItem, letterVariants } from '../../utils/animations'
 
 const Hero = () => {
   const { scrollY } = useScroll()
   const y = useTransform(scrollY, [0, 500], [0, 150])
   const opacity = useTransform(scrollY, [0, 300], [1, 0])
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.2
-      }
-    }
-  }
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        type: "spring",
-        stiffness: 100,
-        damping: 12
-      }
-    }
-  }
-
-  const letterVariants = {
-    hidden: { opacity: 0, y: 50, rotateX: -90 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      rotateX: 0,
-      transition: {
-        type: "spring",
-        stiffness: 100,
-        damping: 10
-      }
-    }
-  }
 
   const nameLetters = SITE_CONFIG.name.split('')
 
@@ -131,13 +94,13 @@ const Hero = () => {
 
       <motion.div
         className="container mx-auto px-4 text-center relative z-10"
-        variants={containerVariants}
+        variants={staggerContainer}
         initial="hidden"
         animate="visible"
         style={{ y, opacity }}
       >
         <motion.div
-          variants={itemVariants}
+          variants={springItem}
           className="mb-6"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
@@ -181,21 +144,21 @@ const Hero = () => {
         </motion.h1>
 
         <motion.p
-          variants={itemVariants}
+          variants={springItem}
           className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 mb-4 max-w-2xl mx-auto"
         >
           {SITE_CONFIG.tagline}
         </motion.p>
 
         <motion.p
-          variants={itemVariants}
+          variants={springItem}
           className="text-base md:text-lg text-gray-600 dark:text-gray-400 mb-12 max-w-xl mx-auto"
         >
           {SITE_CONFIG.bio.split('.')[0]}.
         </motion.p>
 
         <motion.div
-          variants={itemVariants}
+          variants={springItem}
           className="flex flex-col sm:flex-row gap-4 justify-center items-center"
         >
           <motion.div
@@ -217,7 +180,7 @@ const Hero = () => {
         </motion.div>
 
         <motion.div
-          variants={itemVariants}
+          variants={springItem}
           className="mt-20"
         >
           <motion.div

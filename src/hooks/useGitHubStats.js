@@ -78,7 +78,6 @@ export const useGitHubStats = (username) => {
         } else {
           setError('Unable to load GitHub stats. Please try again later.')
         }
-        console.error('Error fetching GitHub stats:', err)
       } finally {
         setLoading(false)
       }

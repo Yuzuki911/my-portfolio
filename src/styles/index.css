@@ -7,11 +7,23 @@
     scroll-behavior: smooth;
   }
 
+  /* Only hide cursor on true pointer devices (mouse/trackpad) */
+  @media (pointer: fine) {
+    * {
+      @apply cursor-none;
+    }
+  }
+
   * {
-    @apply transition-colors duration-300 cursor-none;
+    @apply transition-colors duration-300;
   }
 
   input, textarea, select {
     @apply cursor-text;
+  }
+
+  /* Keyboard focus rings for accessibility */
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-primary-500;
   }
 }
